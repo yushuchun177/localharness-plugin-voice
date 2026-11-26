@@ -1,0 +1,33 @@
+{
+  "id": "voice",
+  "name": "语音输入",
+  "name_en": "Voice",
+  "version": "0.1.0",
+  "description": "朗读回答（Windows 中文语音）；也能录一段麦克风并尝试用系统语音识别转成文字。",
+  "description_en": "Speak answers aloud (Windows voices) and record the mic, transcribing it with the system speech recognizer when available.",
+  "author": "yushuchun177",
+  "homepage": "https://github.com/yushuchun177/localharness-plugin-voice",
+  "min_app": "0.1.0",
+  "tools": [
+    {
+      "name": "voice_speak",
+      "description": "用系统语音朗读一段文字（离线，中文一般自带 Huihui）。",
+      "params": {
+        "text": "string，要朗读的文字",
+        "rate": "int，可选，语速 -10..10，默认 0"
+      }
+    },
+    {
+      "name": "voice_voices",
+      "description": "列出这台机器上装了的语音合成声音。",
+      "params": {}
+    },
+    {
+      "name": "voice_listen",
+      "description": "录一段麦克风并尝试转成文字（需要系统装了对应语言的语音识别）。",
+      "params": {
+        "seconds": "int，可选，录音秒数，默认 5"
+      }
+    }
+  ]
+}

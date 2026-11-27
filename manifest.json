@@ -3,6 +3,7 @@
   "name": "语音输入",
   "name_en": "Voice",
   "version": "0.1.0",
+  "license": "GPL-3.0",
   "description": "朗读回答（Windows 中文语音）；也能录一段麦克风并尝试用系统语音识别转成文字。",
   "description_en": "Speak answers aloud (Windows voices) and record the mic, transcribing it with the system speech recognizer when available.",
   "author": "yushuchun177",

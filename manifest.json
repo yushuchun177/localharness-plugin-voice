@@ -40,6 +40,13 @@
       "unit": "秒"
     }
   ],
+  "commands": [
+    {
+      "name": "say",
+      "description": "朗读一段文字",
+      "usage": "/say 你好"
+    }
+  ],
   "tools": [
     {
       "name": "voice_speak",

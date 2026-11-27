@@ -29,5 +29,21 @@
         "seconds": "int，可选，录音秒数，默认 5"
       }
     }
+  ],
+  "settings": [
+    {
+      "key": "rate",
+      "label": "朗读语速",
+      "type": "int",
+      "default": 0,
+      "help": "-10 慢 … 10 快"
+    },
+    {
+      "key": "seconds",
+      "label": "默认录音秒数",
+      "type": "int",
+      "default": 5,
+      "help": ""
+    }
   ]
 }

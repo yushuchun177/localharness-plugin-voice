@@ -16,6 +16,14 @@ func _app() -> Node:
 	return ml.root.get_node_or_null("/root/App") if ml != null else null
 
 
+
+func _pref(key: String, def_value):
+	var ml := Engine.get_main_loop()
+	var prefs = ml.root.get_node_or_null("/root/PluginPrefs") if ml != null else null
+	if prefs == null:
+		return def_value
+	return prefs.get_value("voice", key, def_value)
+
 func run(tool: String, args: Dictionary) -> Dictionary:
 	match tool:
 		"voice_speak":
@@ -68,7 +76,7 @@ func _speak(args: Dictionary) -> Dictionary:
 	var text := str(args.get("text", "")).strip_edges()
 	if text == "":
 		return {"ok": false, "output": "text 不能为空"}
-	var rate: int = int(args.get("rate", 0))
+	var rate: int = int(args.get("rate", int(_pref("rate", 0))))
 	# 用文件传文本，避免中文经过命令行编码被打坏
 	var txt_path := OS.get_temp_dir().path_join("lh_tts_%d.txt" % randi())
 	var tf := FileAccess.open(txt_path, FileAccess.WRITE)
@@ -93,7 +101,7 @@ Write-Output 'ok'
 
 # ---------------------------------------------------------------- 录音 + 识别
 func _listen(args: Dictionary) -> Dictionary:
-	var seconds: int = clampi(int(args.get("seconds", 5)), 1, 30)
+	var seconds: int = clampi(int(args.get("seconds", int(_pref("seconds", 5)))), 1, 30)
 	var wav: String = _record(seconds)
 	if wav == "":
 		return {"ok": false, "output": "录音失败：没有可用的麦克风（或系统禁止了麦克风访问）"}

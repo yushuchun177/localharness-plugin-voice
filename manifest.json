@@ -58,7 +58,8 @@
       "level": "act",
       "needs": [
         "扬声器"
-      ]
+      ],
+      "async": true
     },
     {
       "name": "voice_voices",
@@ -78,7 +79,8 @@
       "level": "act",
       "needs": [
         "麦克风"
-      ]
+      ],
+      "async": true
     }
   ]
 }

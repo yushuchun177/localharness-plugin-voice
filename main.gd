@@ -212,4 +212,7 @@ try {
 		DirAccess.remove_absolute(out_path)
 	return text
 
-
+func on_command(cmd: String, args: String) -> Dictionary:
+	if cmd != "say":
+		return {"ok": false, "output": "未知命令"}
+	return run("voice_speak", {"text": args.strip_edges()})

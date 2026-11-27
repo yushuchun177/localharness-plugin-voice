@@ -8,6 +8,38 @@
   "author": "yushuchun177",
   "homepage": "https://github.com/yushuchun177/localharness-plugin-voice",
   "min_app": "0.1.0",
+  "requires": {
+    "os": "Windows 10+",
+    "deps": [
+      "PowerShell",
+      "系统语音包"
+    ],
+    "disk": "每次录音几百 KB",
+    "memory": "约 10 MB",
+    "network": false
+  },
+  "settings": [
+    {
+      "key": "rate",
+      "label": "朗读语速",
+      "type": "int",
+      "default": 0,
+      "help": "-10 慢 … 10 快",
+      "min": -10,
+      "max": 10,
+      "unit": ""
+    },
+    {
+      "key": "seconds",
+      "label": "默认录音秒数",
+      "type": "int",
+      "default": 5,
+      "help": "",
+      "min": 1,
+      "max": 30,
+      "unit": "秒"
+    }
+  ],
   "tools": [
     {
       "name": "voice_speak",
@@ -15,35 +47,31 @@
       "params": {
         "text": "string，要朗读的文字",
         "rate": "int，可选，语速 -10..10，默认 0"
-      }
+      },
+      "level": "act",
+      "needs": [
+        "扬声器"
+      ]
     },
     {
       "name": "voice_voices",
       "description": "列出这台机器上装了的语音合成声音。",
-      "params": {}
+      "params": {},
+      "level": "read",
+      "needs": [
+        "系统语音"
+      ]
     },
     {
       "name": "voice_listen",
       "description": "录一段麦克风并尝试转成文字（需要系统装了对应语言的语音识别）。",
       "params": {
         "seconds": "int，可选，录音秒数，默认 5"
-      }
-    }
-  ],
-  "settings": [
-    {
-      "key": "rate",
-      "label": "朗读语速",
-      "type": "int",
-      "default": 0,
-      "help": "-10 慢 … 10 快"
-    },
-    {
-      "key": "seconds",
-      "label": "默认录音秒数",
-      "type": "int",
-      "default": 5,
-      "help": ""
+      },
+      "level": "act",
+      "needs": [
+        "麦克风"
+      ]
     }
   ]
 }
